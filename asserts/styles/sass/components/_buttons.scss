@@ -1,0 +1,30 @@
+button {
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 44px;
+    width: 80%;
+    align-items: center;
+    color: var(--eighth-color);
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+.primary-button {
+    border: 1px solid var(--first-color);
+    background-color: var(--first-color);
+}
+
+.secondary-button {
+    &:disabled {
+        border: 1px solid var(--fifth-color-overshadowed);
+        background-color: var(--fifth-color-overshadowed);
+    }
+
+    &:enabled {
+            border: 1px solid var(--fifth-color);
+            background-color: var(--fifth-color);
+    }
+
+}

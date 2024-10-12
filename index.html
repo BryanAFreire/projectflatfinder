@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlatFinder</title>
+    <link rel="shortcut icon" href="asserts/resources/ico/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="asserts/styles/sass/main.css">
+</head>
+<body>
+<div class="spinner">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+</div>
+<main class="container">
+        <img src="asserts/resources/ico/logo.svg" alt="Logo" width="75" height="75">
+        <div class="h2">Welcome to <span class="name-page">FlatFinder</span></div>
+
+    <form id="login-form" autocomplete="off">
+        <input type="email" class="input-form" name="email" id="email" placeholder="email" required maxlength="31"/>
+        <input type="password" class="input-form" name="password" id="password" placeholder="password" required maxlength="31"/>
+        <button type="submit" class="secondary-button" id="login-button" disabled>Login</button>
+        <button type="button" class="primary-button" id="register-button">Register</button>
+    </form>
+</main>
+<script type="module" src="asserts/events/generateJWT.js"></script>
+<script type="module" src="asserts/events/startSession.js"></script>
+<script type="module" src="asserts/events/login.js"></script>
+</body>
+</html>

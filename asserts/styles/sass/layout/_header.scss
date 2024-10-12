@@ -1,0 +1,27 @@
+header{
+  display: flex;
+  flex-direction: row;
+  background-color: var(--fourth-color-overshadowed);
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--eighth-color);
+}
+.logo{
+  height: 50px;
+  width: 50px;
+}
+.logo-register {
+  margin: 30px 0;
+}
+
+#profile{
+  background-image: url(/asserts/resources/img/user-profile.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: block;
+}

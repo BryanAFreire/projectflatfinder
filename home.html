@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="shortcut icon" href="asserts/resources/ico/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="asserts/styles/sass/main.css" media="print" onload="this.media='all'">
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <img src="asserts/resources/ico/logo.svg" alt="RentFlat Logo">
+    </div>
+    <nav>
+        <p>Hello, <span id="user"></span></p>
+        <div class="content-profile">
+            <span id="profile"></span>
+            <ul class="menu-profile">
+                <li><a href="update-profile.html">Update profile</a></li>
+                <li><a href="#" id="logout_link">Log out</a></li>
+            </ul>
+        </div>
+        <button class="burger-menu" aria-label="Toggle menu"></button>
+        <ul class="content-menu">
+            <li><b><a href="">Home</a></b></li>
+            <li><a href="all-flats.html">All flats</a></li>
+            <li><a href="new-flat.html">New flat</a></li>
+            <li><a href="update-profile.html">Update profile</a></li>
+        </ul>
+    </nav>
+</header>
+<main class="container">
+    <h1>Favorite Flats</h1>
+    <section class="table-responsive">
+        <table id="data-table">
+            <thead>
+            <!-- Table headers will be inserted here -->
+            </thead>
+            <tbody>
+            <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </section>
+    <nav class="pagination" id="pagination-controls" aria-label="Pagination">
+        <!-- Pagination buttons will be inserted here -->
+    </nav>
+</main>
+<footer>
+    <p>&copy; RentFlat 2024. All Rights Reserved</p>
+</footer>
+
+<script src="/asserts/events/getUserStorage.js"></script>
+<script src="/asserts/events/userGreeting.js"></script>
+<script src="/asserts/events/burgerMenu.js"></script>
+<script src="/asserts/events/logOut.js"></script>
+<script src="/asserts/events/getFavoriteFlats.js"></script>
+<script src="/asserts/events/home.js"></script>
+</body>
+
+</html>

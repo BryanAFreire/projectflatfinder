@@ -1,0 +1,41 @@
+.burger-menu{
+    background-image: url(/asserts/resources/img/burger-menu.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    width: 50px;
+    height: inherit;
+    z-index: 100;
+    
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between ;
+    height: inherit;
+}
+nav *{
+    margin: 0 2px;
+}
+
+.content-menu{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: -2px;
+    background-color: var(--fourth-color);
+}
+.content-menu li{
+    padding: 10% 0;
+}
+
+.content-menu li a{
+    color: var(--eighth-color);
+}

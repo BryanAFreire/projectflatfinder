@@ -1,0 +1,13 @@
+input {
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--first-color);
+    caret-color: var(--first-color);
+    &::placeholder{
+        color: var(--third-color);
+    }
+    &:focus {
+        outline: 1px solid var(--first-color);
+    }
+}
