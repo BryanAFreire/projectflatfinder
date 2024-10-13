@@ -5,7 +5,8 @@ const confirmPassword = document.querySelector('#confirm-password');
 const firstName = document.querySelector('#first-name');
 const lastName = document.querySelector('#last-name');
 const birthDate = document.querySelector('#birth-date');
-
+const container = document.querySelector('.container');
+const containerSpinner = document.querySelector('.spinner');
 
 function User(email, password, firstName, lastName, birthDate) {
     this.email = email;
@@ -39,7 +40,8 @@ function setUserStorage(event) {
 
     setTimeout(() => {
         containerSpinner.style.display = 'none';
-        startSession();
+        container.style.display = 'flex';
+        startSession(event);
     }, 3000);
 
 }

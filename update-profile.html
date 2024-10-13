@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Register</title>
+    <meta name="description" content="Register to RentFlat to find and rent flats easily." />
+    <meta name="keywords" content="rent, flats, register, RentFlat" />
+    <link rel="shortcut icon" href="asserts/resources/ico/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="asserts/styles/sass/main.css" />
+</head>
+
+<body>
+<header>
+    <span class="burger-menu"></span>
+    <ul class="content-menu">
+        <li><b><a href="home.html">Home</a></b></li>
+        <li><a href="all-flats.html">All flats</a></li>
+        <li><a href="new-flat.html">New flat</a></li>
+        <li><a href="#">Update profile</a></li>
+    </ul>
+    <div class="logo">
+        <img src="asserts/resources/ico/logo.svg" alt="RentFlat Logo" />
+    </div>
+    <nav>
+        <p>Hello, <span id="user">E</span></p>
+        <div class="content-profile">
+            <span id="profile"></span>
+            <ul class="menu-profile">
+                <li><a href="update-profile.html">Update profile</a></li>
+                <li><a href="#" id="logout_link">Log out</a></li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+<main class="container">
+    <div class="h2">Update User</div>
+    <form id="update-user">
+        <input type="text" class="input" disabled="disabled" id="email" placeholder="email"/>
+        <input type="password" class="input" placeholder="password" id="password" />
+        <input type="text" class="input" placeholder="first name" id="first_name" />
+        <input type="text" class="input" placeholder="last name" id="last_name" />
+        <input type="date" class="input" id="birth_date" />
+        <button type="submit" class="primary-button" id="btn-save">Save</button>
+    </form>
+</main>
+<footer>
+    <p>©RentFlat 2024. All Rights Reserved</p>
+</footer>
+<script src="/asserts/events/displaySpinner.js"></script>
+<script src="/asserts/events/userGreeting.js"></script>
+<script src="/asserts/events/getUserStorage.js"></script>
+<script src="/asserts/events/updateProfile.js"></script>
+<script src="/asserts/events/burgerMenu.js"></script>
+<script src="/asserts/events/logOut.js"></script>
+</body>
+
+</html>

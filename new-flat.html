@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Flat</title>
+    <link rel="shortcut icon" href="asserts/resources/ico/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="asserts/styles/sass/main.css">
+</head>
+
+<body>
+<header>
+    <span class="burger-menu" aria-label="Menu"></span>
+    <ul class="content-menu">
+        <li><b><a href="home.html">Home</a></b></li>
+        <li><a href="all-flats.html">All flats</a></li>
+        <li><a href="#">New flat</a></li>
+        <li><a href="update-profile.html">Update profile</a></li>
+    </ul>
+    <div class="logo">
+        <img src="asserts/resources/ico/logo.svg" alt="RentFlat Logo">
+    </div>
+    <nav>
+        <p>Hello, <span id="user"></span></p>
+        <div class="content-profile">
+            <span id="profile" aria-label="Profile"></span>
+            <ul class="menu-profile">
+                <li><a href="update-profile.html">Update profile</a></li>
+                <li><a href="#" id="logout_link">Log out</a></li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+<div class="spinner">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+</div>
+<main class="container">
+
+        <div class="h2">Register New Flat</div>
+        <form id="newFlat">
+            <div class="group-form">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" placeholder="city" required>
+            </div>
+
+            <div class="group-form">
+                <label for="street_name">Street Name</label>
+                <input type="text" name="street_name" id="street_name" required placeholder="street name">
+            </div>
+
+            <div class="group-form">
+                <label for="street_number">Street Number</label>
+                <input type="text" name="street_number" id="street_number" required placeholder="street number">
+            </div>
+
+            <div class="group-form">
+                <label for="area_size">Area Size</label>
+                <input type="text" name="area_size" id="area_size" required placeholder="area size">
+            </div>
+
+            <div class="group-form">
+                <label for="has_ac">Has AC</label>
+                <select name="has_ac" id="has_ac" class="input-form">
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="group-form">
+                <label for="year_built">Year Built</label>
+                <input type="text" name="year_built" id="year_built" required placeholder="year built">
+            </div>
+
+            <div class="group-form">
+                <label for="rent_price">Rent Price</label>
+                <input type="text" name="rent_price" id="rent_price" required placeholder="rent price">
+            </div>
+
+            <div class="group-form">
+                <label for="date_available">Date Available</label>
+                <input type="date" name="date_available" id="date_available">
+            </div>
+
+            <div class="group-form group-form-button">
+                <button type="button" class="primary-button" id="save-flat">Save</button>
+            </div>
+        </form>
+</main>
+<footer>
+    <p>&copy; RentFlat 2024. All Rights Reserved</p>
+</footer>
+<script src="asserts/events/createFlat.js"></script>
+<script src="asserts/events/displaySpinner.js"></script>
+<script src="/asserts/events/getYearBuilt.js"></script>
+<script src="/asserts/events/getCities.js"></script>
+<script src="/asserts/events/createMessageError.js"></script>
+<script src="/asserts/events/deleteMessageError.js"></script>
+<script src="/asserts/events/getUserStorage.js"></script>
+<script src="/asserts/events/userGreeting.js"></script>
+<script src="/asserts/events/burgerMenu.js"></script>
+<script src="/asserts/events/logOut.js"></script>
+<script src="/asserts/events/newFlat.js"></script>
+</body>
+
+</html>

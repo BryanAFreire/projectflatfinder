@@ -1,4 +1,7 @@
-const startSession = () => {
+const startSession = (event) => {
+    event.preventDefault();
+
+    const loginButton = document.getElementById("login-button");
     const userEmail = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
 
@@ -13,14 +16,14 @@ const startSession = () => {
         localStorage.setItem('token', token);
         window.location.href = '/home.html';
     } else {
-        if (document.querySelector('#btn_log_in')) {
+        if (document.querySelector('#login-button')) {
             createErrorMessage(document.querySelector('#password'), "Credentials are wrong. Please verify and try again.");
         }
     }
 };
 
-if (document.querySelector('#btn_log_in')) {
-    const btnLogIn = document.querySelector('#btn_log_in');
+if (document.querySelector('#login-button')) {
+    const btnLogIn = document.querySelector('#login-button');
     btnLogIn.addEventListener('click', startSession);
 }
 

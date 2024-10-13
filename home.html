@@ -12,6 +12,13 @@
 
 <body>
 <header>
+    <span class="burger-menu" aria-label="Toggle menu"></span>
+    <ul class="content-menu">
+        <li><b><a href="">Home</a></b></li>
+        <li><a href="all-flats.html">All flats</a></li>
+        <li><a href="new-flat.html">New flat</a></li>
+        <li><a href="update-profile.html">Update profile</a></li>
+    </ul>
     <div class="logo">
         <img src="asserts/resources/ico/logo.svg" alt="RentFlat Logo">
     </div>
@@ -24,17 +31,13 @@
                 <li><a href="#" id="logout_link">Log out</a></li>
             </ul>
         </div>
-        <button class="burger-menu" aria-label="Toggle menu"></button>
-        <ul class="content-menu">
-            <li><b><a href="">Home</a></b></li>
-            <li><a href="all-flats.html">All flats</a></li>
-            <li><a href="new-flat.html">New flat</a></li>
-            <li><a href="update-profile.html">Update profile</a></li>
-        </ul>
     </nav>
 </header>
-<main class="container">
-    <h1>Favorite Flats</h1>
+<div id="no-favorites-message" >
+    <p>No favorite flats registered.</p>
+</div>
+<main class="container container-flats">
+    <div class="h2">Favorite Flats</div>
     <section class="table-responsive">
         <table id="data-table">
             <thead>
@@ -52,7 +55,7 @@
 <footer>
     <p>&copy; RentFlat 2024. All Rights Reserved</p>
 </footer>
-
+<script src="/asserts/events/noFavoriteFlat.js"></script>
 <script src="/asserts/events/getUserStorage.js"></script>
 <script src="/asserts/events/userGreeting.js"></script>
 <script src="/asserts/events/burgerMenu.js"></script>

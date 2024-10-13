@@ -2,6 +2,11 @@ table {
     margin: 10px auto;
     width: 96%;
     border-collapse: collapse;
+    color: var(--fourth-color);
+
+    & button{
+        color: var(--fourth-color);
+    }
 }
 table, th, td {
     border: 1px solid black;
@@ -10,6 +15,11 @@ th, td {
     padding: 10px;
     text-align: left;
 }
+
+td button{
+    width: 200px;
+}
+
 .pagination {
     margin-top: 20px;
     text-align: center;
@@ -17,6 +27,7 @@ th, td {
 .pagination button {
     margin: 0 5px;
     padding: 5px 10px;
+    color: var(--fourth-color);
 }
 .table-responsive {
     overflow-x: auto;

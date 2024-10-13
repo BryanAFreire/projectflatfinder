@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const listProfile = () => {
+    const listProfile = (event) => {
         if (contentProfile.style.display === 'inline-block') {
             contentProfile.style.display = 'none';
         } else {
@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
         profileIco.addEventListener('click', listProfile)
     }
 
-    dataFavoriteFlat();
+    const city = document.querySelector('#city');
+    city.addEventListener('keyup', loadCities);
+
+    const yearBuilt = document.querySelector('#year_built');
+    yearBuilt.addEventListener('keyup', loadYears);
+
+    const saveFlat = document.querySelector('#save-flat');
+    saveFlat.addEventListener('click', createFlat);
 
 });

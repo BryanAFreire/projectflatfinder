@@ -1,23 +1,38 @@
-const dataFlat = () => {
+const dataFavoriteFlat = () => {
     let storedFlats = JSON.parse(localStorage.getItem('flats')) || [];
     const table = document.getElementById('data-table');
     const tableBody = table.getElementsByTagName('tbody')[0];
     const tableHead = table.getElementsByTagName('thead')[0];
-    const userElement = document.getElementById('user');
-    const userText = userElement ? userElement.textContent : '';
+    const noFavoriteFlat = document.querySelector("#no-favorites-message");
+    const container = document.querySelector(".container");
 
     // Clear existing rows and headers
     tableBody.innerHTML = '';
     tableHead.innerHTML = '';
 
+    // Get the token from local storage
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('No token found in local storage.');
+        return;
+    }
+
+    // Decode the token to get the email
+    const decodedToken = decodeJWT(token);
+    const userEmail = decodedToken.payload.username.email;
+
     // Filter flats by logged-in user and favorite status
-    const userFlats = storedFlats.filter(flat => flat.user === userText && flat.favorite === true);
+    const userFlats = storedFlats.filter(flat => flat.email === userEmail);
+    const favoriteFlats = userFlats.filter(flat => flat.favorite === true);
     let keys = [];
 
-    if (userFlats.length > 0) {
+    if (favoriteFlats.length > 0) {
+        noFavoriteFlat.style.display = 'none';
+        container.style.display = 'flex';
+
         // Insert column headers
         const headerRow = tableHead.insertRow();
-        keys = Object.keys(userFlats[0]).filter(key => key !== 'user');
+        keys = Object.keys(favoriteFlats[0]).filter(key => key !== 'user');
         keys.forEach(key => {
             const headerCell = document.createElement('th');
             headerCell.textContent = key;
@@ -30,7 +45,7 @@ const dataFlat = () => {
         headerRow.appendChild(removeHeaderCell);
 
         // Pagination variables
-        const rowsPerPage = 2;
+        const rowsPerPage = 5;
         let currentPage = 1;
 
         // Function to display a specific page of data
@@ -39,7 +54,7 @@ const dataFlat = () => {
 
             const start = (page - 1) * rowsPerPage;
             const end = start + rowsPerPage;
-            const pageData = userFlats.slice(start, end);
+            const pageData = favoriteFlats.slice(start, end);
 
             pageData.forEach((flat, index) => {
                 const row = tableBody.insertRow();
@@ -57,7 +72,7 @@ const dataFlat = () => {
                     if (rowIndex > -1) {
                         storedFlats[rowIndex].favorite = false;
                         localStorage.setItem('flats', JSON.stringify(storedFlats));
-                        dataFlat(); // Refresh the table
+                        dataFavoriteFlat(); // Refresh the table
                     }
                 };
                 removeCell.appendChild(removeButton);
@@ -89,19 +104,22 @@ const dataFlat = () => {
 
         // Initial display
         displayPage(currentPage);
+    }else {
+        // No favorite flats found
+        NoFavoriteFlat();
     }
 };
 
 // Call the function to initialize the table
-dataFlat();
+dataFavoriteFlat();
 
 // CSS for horizontal scroll
 const style = document.createElement('style');
 style.innerHTML = `
-    #data-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-`;
+        #data-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    `;
 document.head.appendChild(style);

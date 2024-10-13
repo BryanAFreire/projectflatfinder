@@ -21,3 +21,12 @@
   text-align: center;
   color: var(--sixth-color);
 }
+
+.container-flats{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}

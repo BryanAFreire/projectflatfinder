@@ -1,26 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function(event) {
+    event.preventDefault();
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const loginButton = document.getElementById("login-button");
     const registerButton = document.getElementById("register-button");
 
     const validateForm = () => {
-        const emailValido = emailInput.validity.valid;
-        const passwordValido = passwordInput.value.trim() !== "";
+        const emailValid = emailInput.validity.valid;
+        const passwordValid = passwordInput.value.trim() !== "";
 
-        if (!emailValido) {
+        if (!emailValid) {
             createErrorMessage(emailInput, "Please enter a valid email.");
         } else {
             deleteErrorMessage(emailInput);
         }
 
-        if (!passwordValido) {
+        if (!passwordValid) {
             createErrorMessage(passwordInput, "Please enter a password.");
         } else {
             deleteErrorMessage(passwordInput);
         }
 
-        loginButton.disabled = !(emailValido && passwordValido);
+        loginButton.disabled = !(emailValid && passwordValid);
     }
 
     const openRegister = () =>{
