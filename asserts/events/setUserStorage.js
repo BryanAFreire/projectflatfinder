@@ -1,4 +1,7 @@
+import { validateForm } from './validateFormRegister.js';
+
 let users = JSON.parse(localStorage.getItem('users')) || [];
+
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const confirmPassword = document.querySelector('#confirm-password');
@@ -16,11 +19,9 @@ function User(email, password, firstName, lastName, birthDate) {
     this.birthDate = birthDate;
 }
 
-function setUserStorage(event) {
+export function setUserStorage(event) {
     event.preventDefault();
-
-    if (password.value !== confirmPassword.value) {
-        alert("Passwords don't match. Verify and try again.");
+    if (!validateForm()) {
         return;
     }
 
@@ -31,6 +32,13 @@ function setUserStorage(event) {
         lastName.value.toUpperCase(),
         birthDate.value
     );
+
+    // Check if email already exists in localStorage
+    const emailExists = users.some(u => u.email === user.email);
+    if (emailExists) {
+        createErrorMessage(email, "Email already exists.");
+        return;
+    }
 
     users.push(user);
 

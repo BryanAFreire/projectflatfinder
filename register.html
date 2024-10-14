@@ -23,22 +23,24 @@
 <main class="container">
     <img src="asserts/resources/ico/logo.svg" alt="Logo" width="75" height="75">
     <div class="h2">Register</div>
-    <form id="register-form" autocomplete="off">
-        <input type="text" class="input-form" name="first-name" id="first-name" placeholder="first name" required maxlength="31" />
-        <input type="text" class="input-form" name="last-name" id="last-name" placeholder="last name" required maxlength="31" />
-        <input type="email" class="input-form" name="email" id="email" placeholder="email" required maxlength="31" />
-        <input type="password" class="input-form" name="password" id="password" placeholder="password" required minlength="6" />
-        <input type="password" class="input-form" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required minlength="6" />
-        <input type="date" class="input-form" name="birth-date" id="birth-date" placeholder="birth date" required />
+    <form id="register-form" autocomplete="off" novalidate>
+        <input type="text" class="input-form" name="first-name" id="first-name" placeholder="first name" required maxlength="31"/>
+        <input type="text" class="input-form" name="last-name" id="last-name" placeholder="last name" required maxlength="31"/>
+        <input type="email" class="input-form" name="email" id="email" placeholder="email" required maxlength="31"/>
+        <input type="password" class="input-form" name="password" id="password" placeholder="password" required />
+        <input type="password" class="input-form" name="confirm-password" id="confirm-password" placeholder="Confirm Password" required/>
+        <input type="date" class="input-form" name="birth-date" id="birth-date" placeholder="birth date" required/>
         <button type="submit" class="primary-button" id="register-button">Register</button>
         <span><a href="index.html">I already have an account. Log in.</a></span>
     </form>
 </main>
+<script type="module" src="asserts/events/calculateAge.js"></script>
+<script src="asserts/events/deleteMessageError.js"></script>
+<script src="asserts/events/createMessageError.js"></script>
 <script src="asserts/events/displaySpinner.js"></script>
 <script src="asserts/events/generateJWT.js"></script>
 <script src="asserts/events/startSession.js"></script>
-<script src="asserts/events/setUserStorage.js"></script>
-<script src="asserts/events/register.js"></script>
+<script type="module" src="asserts/events/register.js"></script>
 </body>
 
 </html>

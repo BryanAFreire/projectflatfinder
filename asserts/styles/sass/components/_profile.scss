@@ -1,0 +1,24 @@
+.content-profile {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-profile{
+  display: none;
+  position: absolute;
+  background-color: var(--fourth-color-overshadowed);
+  height: 100px;
+  width: 100px;
+  top: 109%;
+  left: -25px;
+}
+
+.menu-profile li{
+  display: block;
+  padding: 5px;
+}
+
+.menu-profile  li a {
+  display: block;
+  color: var(--eighth-color);
+}
