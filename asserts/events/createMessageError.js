@@ -10,4 +10,4 @@ const createErrorMessage = (inputElement, message) => {
         `;
         inputElement.insertAdjacentElement('afterend', containerError);
     }
-}
+}; export { createErrorMessage };

@@ -1,5 +1,11 @@
+import {deleteErrorMessage} from "./deleteMessageError.js";
+import {createErrorMessage} from "./createMessageError.js";
+import {startSession} from "./startSession.js";
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
     event.preventDefault();
+
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const loginButton = document.getElementById("login-button");
@@ -25,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     const openRegister = () =>{
-        window.location.href = "/register.html"
+        window.location.href = "./register.html";
     }
 
     emailInput.addEventListener("keyup", validateForm);
@@ -34,5 +40,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     emailInput.addEventListener("blur", validateForm);
     passwordInput.addEventListener("blur", validateForm);
 
-    registerButton.addEventListener("click", openRegister);
+    if (loginButton) {
+        loginButton.addEventListener('click', startSession);
+    }
+
+    if (registerButton) {
+        registerButton.addEventListener('click', openRegister);
+    }
 });

@@ -1,6 +1,6 @@
 const deleteErrorMessage = (inputElement) => {
-    let contentMessage = inputElement.parentElement.querySelector('.container-error-message');
+    const contentMessage = inputElement.parentElement.querySelector('.container-error-message');
     if (contentMessage) {
         contentMessage.remove();
     }
-}
+}; export { deleteErrorMessage };

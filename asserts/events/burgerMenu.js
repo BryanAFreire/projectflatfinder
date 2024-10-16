@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const listMenu = (event) => {
+    const listMenu = () => {
         if (contentMenu.style.display === 'flex') {
             burgerMenu.style.backgroundImage = 'url(/asserts/resources/img/burger-menu.svg)';
             contentMenu.style.display = 'none';

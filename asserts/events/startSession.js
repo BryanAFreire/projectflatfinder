@@ -1,28 +1,28 @@
-const loginButton = document.getElementById("login-button");
-const userEmail = document.querySelector('#email').value;
-const password = document.querySelector('#password').value;
+import {createErrorMessage} from "./createMessageError.js";
+import {generateJWT} from "./generateJWT.js"; // Assuming you have a function to generate JWT
+
 const startSession = (event) => {
     event.preventDefault();
+    const userEmail = document.querySelector('#email').value.toLowerCase();
+    const password = document.querySelector('#password').value;
 
     // Recover users from localstorage
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
     // Finds if user exist
-    const user = users.find(user => user.email === userEmail && user.password === password);
+    const user = users.find(user => user.email === userEmail);
 
     if (user) {
-        const token = generateJWT(user);
-        localStorage.setItem('token', token);
-        window.location.href = '/home.html';
-    } else {
-        if (document.querySelector('#login-button')) {
+        if (user.password === password) {
+            const token = generateJWT(user);
+            localStorage.setItem('token', token);
+            window.location.href = './home.html';
+        } else {
             createErrorMessage(document.querySelector('#password'), "Credentials are wrong. Please verify and try again.");
         }
+    } else {
+        createErrorMessage(document.querySelector('#email'), "User not registered. Please sign up.");
     }
 };
 
-if (loginButton) {
-    const btnLogIn = document.querySelector('#login-button');
-    btnLogIn.addEventListener('click', startSession);
-}
-
+export {startSession};

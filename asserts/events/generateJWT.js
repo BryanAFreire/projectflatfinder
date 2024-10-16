@@ -1,4 +1,4 @@
-function generateJWT(username) {
+const generateJWT = (username) => {
     const header = {
         alg: "HS256",
         typ: "JWT"
@@ -21,3 +21,4 @@ function generateJWT(username) {
 
     return `${stringifiedHeader}.${stringifiedPayload}.${signature}`;
 }
+export {generateJWT};
