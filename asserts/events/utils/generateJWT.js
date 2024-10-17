@@ -20,5 +20,4 @@ const generateJWT = (username) => {
     const signature = btoa(stringifiedHeader + "." + stringifiedPayload); // signature simulate
 
     return `${stringifiedHeader}.${stringifiedPayload}.${signature}`;
-}
-export {generateJWT};
+}; export {generateJWT};

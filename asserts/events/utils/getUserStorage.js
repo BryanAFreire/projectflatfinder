@@ -1,10 +1,10 @@
-function base64UrlDecode(base64Url) {
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const decodedData = atob(base64);
-    return JSON.parse(decodedData);
-}
+export function decodeJWT(token) {
+    function base64UrlDecode(base64Url) {
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const decodedData = atob(base64);
+        return JSON.parse(decodedData);
+    }
 
-function decodeJWT(token) {
     const parts = token.split('.');
 
     if (parts.length !== 3) {

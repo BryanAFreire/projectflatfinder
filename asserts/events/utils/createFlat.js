@@ -1,6 +1,7 @@
 import {deleteErrorMessage} from "./deleteMessageError.js";
 import {createErrorMessage} from "./createMessageError.js";
 import {validateFormFlat} from "./validateFormFlat.js";
+import {displaySpinner} from "./displaySpinner";
 
 const city = document.querySelector("#city");
 const street_name = document.querySelector("#street_name");
@@ -96,8 +97,9 @@ const createFlat = (e) => {
     displaySpinner();
 
     setTimeout(() => {
+        let containerSpinner = document.querySelector('.container-spinner');
         containerSpinner.style.display = 'none';
         container.style.display = 'flex';
         window.location.href = 'home.html';
     }, 3000);
-};
+}; export {createFlat};

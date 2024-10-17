@@ -17,7 +17,7 @@ const loadYears = () => {
 
     document.body.appendChild(datalist);
     yearInput.setAttribute('list', 'years-list');
-};
+}; export {loadYears};
 
 // Call the function to load the years
 loadYears();

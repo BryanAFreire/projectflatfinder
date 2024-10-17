@@ -1,5 +1,7 @@
-const fullName = document.querySelector('#user');
- const userGreeting = () => {
+import { decodeJWT } from './getUserStorage.js';
+
+export function userGreeting() {
+    const fullName = document.querySelector('#user');
     const token = localStorage.getItem('token');
     console.log('Token:', token);
 
@@ -17,5 +19,4 @@ const fullName = document.querySelector('#user');
     } else {
         console.log('No token found in localStorage.');
     }
-
-};
+}

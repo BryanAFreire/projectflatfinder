@@ -1,6 +1,8 @@
 import { calculateAge } from './calculateAge.js';
+import { createErrorMessage } from "./createMessageError.js";
+import { deleteErrorMessage } from "./deleteMessageError.js";
 
-export function validateForm() {
+export function validateFormRegister() {
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirm-password");
@@ -10,8 +12,8 @@ export function validateForm() {
     const registerButton = document.getElementById("register-button");
     let isValid = true;
 
-    const validate = () => {
-        const emailValid = emailInput.validity.valid;
+    const validateRegister = () => {
+        const emailValid = emailInput.validity.valid && emailInput.value.trim() !== "";
         const passwordValid = passwordInput.value.trim().length >= 6;
         const confirmPasswordValid = confirmPasswordInput.value.trim() === passwordInput.value.trim();
         const firstNameValid = firstNameInput.value.trim().length >= 2;
@@ -63,27 +65,27 @@ export function validateForm() {
         registerButton.disabled = !isValid;
     };
 
-    firstNameInput.addEventListener("keyup", validate);
-    lastNameInput.addEventListener("keyup", validate);
-    emailInput.addEventListener("keyup", validate);
-    passwordInput.addEventListener("keyup", validate);
-    confirmPasswordInput.addEventListener("keyup", validate);
-    birthDateInput.addEventListener("keyup", validate);
+    firstNameInput.addEventListener("keyup", validateRegister);
+    lastNameInput.addEventListener("keyup", validateRegister);
+    emailInput.addEventListener("keyup", validateRegister);
+    passwordInput.addEventListener("keyup", validateRegister);
+    confirmPasswordInput.addEventListener("keyup", validateRegister);
+    birthDateInput.addEventListener("keyup", validateRegister);
 
-    firstNameInput.addEventListener("blur", validate);
-    lastNameInput.addEventListener("blur", validate);
-    emailInput.addEventListener("blur", validate);
-    passwordInput.addEventListener("blur", validate);
-    confirmPasswordInput.addEventListener("blur", validate);
-    birthDateInput.addEventListener("blur", validate);
+    firstNameInput.addEventListener("blur", validateRegister);
+    lastNameInput.addEventListener("blur", validateRegister);
+    emailInput.addEventListener("blur", validateRegister);
+    passwordInput.addEventListener("blur", validateRegister);
+    confirmPasswordInput.addEventListener("blur", validateRegister);
+    birthDateInput.addEventListener("blur", validateRegister);
 
-    firstNameInput.addEventListener("change", validate);
-    lastNameInput.addEventListener("change", validate);
-    emailInput.addEventListener("change", validate);
-    passwordInput.addEventListener("change", validate);
-    confirmPasswordInput.addEventListener("change", validate);
-    birthDateInput.addEventListener("change", validate);
+    firstNameInput.addEventListener("change", validateRegister);
+    lastNameInput.addEventListener("change", validateRegister);
+    emailInput.addEventListener("change", validateRegister);
+    passwordInput.addEventListener("change", validateRegister);
+    confirmPasswordInput.addEventListener("change", validateRegister);
+    birthDateInput.addEventListener("change", validateRegister);
 
-    validate();
+    validateRegister();
     return isValid;
 }

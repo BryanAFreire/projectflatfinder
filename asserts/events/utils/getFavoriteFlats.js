@@ -1,4 +1,7 @@
-const dataFavoriteFlat = () => {
+import { decodeJWT } from "./getUserStorage.js";
+import {NoFavoriteFlat} from "./noFavoriteFlat.js";
+
+export function dataFavoriteFlat() {
     let storedFlats = JSON.parse(localStorage.getItem('flats')) || [];
     const table = document.getElementById('data-table');
     const tableBody = table.getElementsByTagName('tbody')[0];
@@ -108,18 +111,16 @@ const dataFavoriteFlat = () => {
         // No favorite flats found
         NoFavoriteFlat();
     }
-};
 
-// Call the function to initialize the table
-dataFavoriteFlat();
-
-// CSS for horizontal scroll
-const style = document.createElement('style');
-style.innerHTML = `
+    // CSS for horizontal scroll
+    const style = document.createElement('style');
+    style.innerHTML = `
         #data-table {
             display: block;
             overflow-x: auto;
             white-space: nowrap;
         }
     `;
-document.head.appendChild(style);
+    document.head.appendChild(style);
+}
+

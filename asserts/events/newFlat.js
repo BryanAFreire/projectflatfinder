@@ -1,43 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
+import {userGreeting} from "./utils/userGreeting.js";
+import {createFlat} from "./utils/createFlat.js";
+import {loadCities} from "./utils/getCities.js";
+import {loadYears} from "./utils/getYearBuilt.js";
+import {changeMenuBurger} from "./utils/burgerMenu.js";
+import {listProfile} from "./utils/profileMenu.js";
+import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
+import {logOut} from "./utils/logOut.js";
+
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
 
     userGreeting();
 
-    const burgerMenu = document.querySelector('.burger-menu');
-    const contentMenu = document.querySelector('.content-menu');
-    const profileIco = document.querySelector('.content-profile');
-    const contentProfile = document.querySelector('.menu-profile');
+    document.addEventListener('click', displayNoneMenuPerfil);
 
-
-    document.addEventListener('click', (event) => {
-        if (!burgerMenu.contains(event.target) && !contentMenu.contains(event.target)) {
-            contentMenu.style.display = 'none';
-            burgerMenu.style.backgroundImage = 'url(/asserts/resources/img/burger-menu.svg)';
-        }
-
-        if (!profileIco.contains(event.target) && !contentProfile.contains(event.target)) {
-            contentProfile.style.display = 'none';
-        }
-    });
-
-    const listProfile = (event) => {
-        if (contentProfile.style.display === 'inline-block') {
-            contentProfile.style.display = 'none';
-        } else {
-            contentProfile.style.display = 'inline-block';
-        }
+    const logOutLink = document.querySelector('#logout_link');
+    if(logOutLink){
+        logOutLink.addEventListener('click', logOut)
     }
 
+    const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
         profileIco.addEventListener('click', listProfile)
     }
-
     const city = document.querySelector('#city');
-    city.addEventListener('keyup', loadCities);
+    if (city) {
+        city.addEventListener('keyup', loadCities)
+    }
 
     const yearBuilt = document.querySelector('#year_built');
-    yearBuilt.addEventListener('keyup', loadYears);
+    if (yearBuilt) {
+        yearBuilt.addEventListener('keyup', loadYears)
+    }
+
+    const burgerMenu = document.querySelector('.burger-menu');
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', changeMenuBurger)
+    }
 
     const saveFlat = document.querySelector('#save-flat');
-    saveFlat.addEventListener('click', createFlat);
+    if (saveFlat) {
+        saveFlat.addEventListener('click', createFlat)
+    }
 
 });

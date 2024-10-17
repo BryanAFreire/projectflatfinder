@@ -1,30 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
+import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
+import {listProfile} from "./utils/profileMenu.js";
+import {userGreeting} from "./utils/userGreeting.js";
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
+
     userGreeting();
 
-    const burgerMenu = document.querySelector('.burger-menu');
-    const contentMenu = document.querySelector('.content-menu');
     const profileIco = document.querySelector('.content-profile');
-    const contentProfile = document.querySelector('.menu-profile');
 
 
-    document.addEventListener('click', (event) => {
-        if (!burgerMenu.contains(event.target) && !contentMenu.contains(event.target)) {
-            contentMenu.style.display = 'none';
-            burgerMenu.style.backgroundImage = 'url(/asserts/resources/img/burger-menu.svg)';
-        }
+    document.addEventListener('click', displayNoneMenuPerfil);
 
-        if (!profileIco.contains(event.target) && !contentProfile.contains(event.target)) {
-            contentProfile.style.display = 'none';
-        }
-    });
-
-    const listProfile = (event) => {
-        if (contentProfile.style.display === 'inline-block') {
-            contentProfile.style.display = 'none';
-        } else {
-            contentProfile.style.display = 'inline-block';
-        }
-    };
 
     if (profileIco) {
         profileIco.addEventListener('click', listProfile);
@@ -58,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('token');
             setTimeout(() => {
                 alert('Your session has expired. Please log in again.');
-                window.location.href = '/index.html';
+                window.location.href = './index.html';
             }, 0);
         }
     };
@@ -81,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         birthDate.value = birthUpdate || '';
     } catch (error) {
         console.error('Error decoding the token:', error);
-        window.location.href = '/404.html';
+        window.location.href = './404.html';
         return;
     }
 
@@ -109,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Clear the token and redirect to index.html
                         localStorage.removeItem('token');
-                        window.location.href = '/index.html';
+                        window.location.href = './index.html';
                     } else {
                         console.log('User not found in localStorage.');
                     }

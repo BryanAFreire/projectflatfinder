@@ -1,34 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { displayNoneMenuPerfil } from './utils/displayNoneMenuPerfil.js';
+import { userGreeting } from './utils/userGreeting.js';
+import { listProfile } from './utils/profileMenu.js';
+import { dataFavoriteFlat } from './utils/getFavoriteFlats.js';
+import { changeMenuBurger } from "./utils/burgerMenu.js";
+
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
 
     userGreeting();
 
-    const burgerMenu = document.querySelector('.burger-menu');
-    const contentMenu = document.querySelector('.content-menu');
+    document.addEventListener('click', displayNoneMenuPerfil);
+
     const profileIco = document.querySelector('.content-profile');
-    const contentProfile = document.querySelector('.menu-profile');
-
-
-    document.addEventListener('click', (event) => {
-        if (!burgerMenu.contains(event.target) && !contentMenu.contains(event.target)) {
-            contentMenu.style.display = 'none';
-            burgerMenu.style.backgroundImage = 'url(/asserts/resources/img/burger-menu.svg)';
-        }
-
-        if (!profileIco.contains(event.target) && !contentProfile.contains(event.target)) {
-            contentProfile.style.display = 'none';
-        }
-    });
-
-    const listProfile = () => {
-        if (contentProfile.style.display === 'inline-block') {
-            contentProfile.style.display = 'none';
-        } else {
-            contentProfile.style.display = 'inline-block';
-        }
-    }
-
     if (profileIco) {
         profileIco.addEventListener('click', listProfile)
+    }
+
+    const burgerMenu = document.querySelector('.burger-menu');
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', changeMenuBurger);
     }
 
     dataFavoriteFlat();

@@ -19,4 +19,4 @@ const loadCities = () => {
 
     document.body.appendChild(datalist);
     cityInput.setAttribute('list', 'cities-list');
-}
+}; export {loadCities};

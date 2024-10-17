@@ -1,5 +1,5 @@
 import {createErrorMessage} from "./createMessageError.js";
-import {generateJWT} from "./generateJWT.js"; // Assuming you have a function to generate JWT
+import {generateJWT} from "./generateJWT.js";
 
 const startSession = (event) => {
     event.preventDefault();

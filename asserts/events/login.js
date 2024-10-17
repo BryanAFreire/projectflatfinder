@@ -1,49 +1,31 @@
-import {deleteErrorMessage} from "./deleteMessageError.js";
-import {createErrorMessage} from "./createMessageError.js";
-import {startSession} from "./startSession.js";
-
+import { startSession } from "./utils/startSession.js";
+import { validateFormLogin } from "./utils/validateFormLogin.js";
 
 document.addEventListener("DOMContentLoaded", function(event) {
     event.preventDefault();
 
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
+
+    if (emailInput) {
+        emailInput.addEventListener("keyup", validateFormLogin);
+        emailInput.addEventListener("blur", validateFormLogin);
+    }
+
+    if (passwordInput) {
+        passwordInput.addEventListener("keyup", validateFormLogin);
+        passwordInput.addEventListener("blur", validateFormLogin);
+    }
+
     const loginButton = document.getElementById("login-button");
-    const registerButton = document.getElementById("register-button");
-
-    const validateForm = () => {
-        const emailValid = emailInput.validity.valid;
-        const passwordValid = passwordInput.value.trim() !== "";
-
-        if (!emailValid) {
-            createErrorMessage(emailInput, "Please enter a valid email.");
-        } else {
-            deleteErrorMessage(emailInput);
-        }
-
-        if (!passwordValid) {
-            createErrorMessage(passwordInput, "Please enter a password.");
-        } else {
-            deleteErrorMessage(passwordInput);
-        }
-
-        loginButton.disabled = !(emailValid && passwordValid);
+    if (loginButton) {
+        loginButton.addEventListener('click', startSession);
     }
 
     const openRegister = () =>{
         window.location.href = "./register.html";
     }
-
-    emailInput.addEventListener("keyup", validateForm);
-    passwordInput.addEventListener("keyup", validateForm);
-
-    emailInput.addEventListener("blur", validateForm);
-    passwordInput.addEventListener("blur", validateForm);
-
-    if (loginButton) {
-        loginButton.addEventListener('click', startSession);
-    }
-
+    const registerButton = document.getElementById("register-button");
     if (registerButton) {
         registerButton.addEventListener('click', openRegister);
     }
