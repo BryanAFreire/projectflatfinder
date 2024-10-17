@@ -1,5 +1,5 @@
 import { decodeJWT } from "./getUserStorage.js";
-import {NoFavoriteFlat} from "./noFavoriteFlat.js";
+import { NoFavoriteFlat } from "./noFavoriteFlat.js";
 
 export function dataFavoriteFlat() {
     let storedFlats = JSON.parse(localStorage.getItem('flats')) || [];
@@ -35,7 +35,7 @@ export function dataFavoriteFlat() {
 
         // Insert column headers
         const headerRow = tableHead.insertRow();
-        keys = Object.keys(favoriteFlats[0]).filter(key => key !== 'user');
+        keys = Object.keys(favoriteFlats[0]).filter(key => (key !== 'email') && (key !== 'favorite'));
         keys.forEach(key => {
             const headerCell = document.createElement('th');
             headerCell.textContent = key;
@@ -59,7 +59,7 @@ export function dataFavoriteFlat() {
             const end = start + rowsPerPage;
             const pageData = favoriteFlats.slice(start, end);
 
-            pageData.forEach((flat, index) => {
+            pageData.forEach((flat) => {
                 const row = tableBody.insertRow();
                 keys.forEach(key => {
                     const cell = row.insertCell();
@@ -107,7 +107,7 @@ export function dataFavoriteFlat() {
 
         // Initial display
         displayPage(currentPage);
-    }else {
+    } else {
         // No favorite flats found
         NoFavoriteFlat();
     }
@@ -123,4 +123,3 @@ export function dataFavoriteFlat() {
     `;
     document.head.appendChild(style);
 }
-

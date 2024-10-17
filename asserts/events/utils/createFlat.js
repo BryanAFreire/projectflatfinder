@@ -1,7 +1,8 @@
-import {deleteErrorMessage} from "./deleteMessageError.js";
-import {createErrorMessage} from "./createMessageError.js";
-import {validateFormFlat} from "./validateFormFlat.js";
-import {displaySpinner} from "./displaySpinner";
+import { deleteErrorMessage } from "./deleteMessageError.js";
+import { createErrorMessage } from "./createMessageError.js";
+import { validateFormFlat } from "./validateFormFlat.js";
+import { displaySpinner } from "./displaySpinner.js";
+import { decodeJWT } from "./getUserStorage.js";
 
 const city = document.querySelector("#city");
 const street_name = document.querySelector("#street_name");
@@ -68,12 +69,16 @@ const createFlat = (e) => {
     const decodedToken = decodeJWT(token);
     const userEmail = decodedToken.payload.username.email;
     console.info('dataUser:', userEmail);
+
+    // Set default value for has_ac if not selected
+    const hasAcValue = has_ac.value.trim() === "Yes" ? "Yes" : "No";
+
     const flat = {
         city: city.value.toLowerCase(),
         street_name: street_name.value.toLowerCase(),
         street_number: street_number.value.toLowerCase(),
         area_size: area_size.value,
-        has_ac: has_ac.value,
+        has_ac: hasAcValue,
         yearBuilt: year_built.value,
         rent_price: rent_price.value,
         date_available: date_available.value,
@@ -81,7 +86,7 @@ const createFlat = (e) => {
         email: userEmail
     };
 
-    let flats = JSON.parse(localStorage.getItem('flats')) || [];
+    const flats = JSON.parse(localStorage.getItem('flats')) || [];
     flats.push(flat);
     localStorage.setItem('flats', JSON.stringify(flats));
 
@@ -97,9 +102,12 @@ const createFlat = (e) => {
     displaySpinner();
 
     setTimeout(() => {
-        let containerSpinner = document.querySelector('.container-spinner');
+        const containerSpinner = document.querySelector('.spinner');
+        const container = document.querySelector('.container');
         containerSpinner.style.display = 'none';
         container.style.display = 'flex';
-        window.location.href = 'home.html';
+        window.location.href = './home.html';
     }, 3000);
-}; export {createFlat};
+};
+
+export { createFlat };
