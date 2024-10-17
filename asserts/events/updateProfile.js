@@ -1,20 +1,23 @@
 import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
 import {listProfile} from "./utils/profileMenu.js";
 import {userGreeting} from "./utils/userGreeting.js";
+import {changeMenuBurger} from "./utils/burgerMenu.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
 
     userGreeting();
 
-    const profileIco = document.querySelector('.content-profile');
-
-
     document.addEventListener('click', displayNoneMenuPerfil);
 
-
+    const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
-        profileIco.addEventListener('click', listProfile);
+        profileIco.addEventListener('click', listProfile)
+    }
+
+    const burgerMenu = document.querySelector('.burger-menu');
+    if (burgerMenu) {
+        burgerMenu.addEventListener('click', changeMenuBurger);
     }
 
     const token = localStorage.getItem('token');
@@ -26,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     // Redirect to 404 page if no token is found
     if (!token) {
-        window.location.href = '/404.html';
+        window.location.href = './404.html';
         return;
     }
 
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     const checkTokenExpiration = () => {
         const decoded = decodeJWT(token);
-        const currentTime = Math.floor(Date.now() / 1000);
+        const currentTime = Math.floor(Date.now() / 100);
         if (currentTime >= decoded.exp) {
             localStorage.removeItem('token');
             setTimeout(() => {
