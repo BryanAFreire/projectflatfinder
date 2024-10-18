@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="shortcut icon" href="asserts/resources/ico/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="asserts/styles/sass/main.css">
+</head>
+
+<body>
+<header>
+    <span class="burger-menu" aria-label="Menu"></span>
+    <ul class="content-menu">
+        <li><b><a href="home.html">Home</a></b></li>
+        <li><a href="#">All flats</a></li>
+        <li><a href="new-flat.html">New flat</a></li>
+        <li><a href="update-profile.html">Update profile</a></li>
+    </ul>
+    <div class="logo">
+        <img src="asserts/resources/ico/logo.svg" alt="RentFlat Logo">
+    </div>
+    <nav>
+        <p>Hello, <span id="user"></span></p>
+        <div class="content-profile">
+            <span id="profile" aria-label="Profile"></span>
+            <ul class="menu-profile">
+                <li><a href="update-profile.html">Update profile</a></li>
+                <li><a href="#" id="logout_link">Log out</a></li>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+<div id="no-favorites-message" >
+    <p>No favorite flats registered.</p>
+</div>
+<main class="container container-flats">
+    <div class="h2">All Flats</div>
+
+    <section class="table-responsive">
+        <table id="data-table">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+    <nav class="pagination" id="pagination-controls">
+        <!-- Pagination buttons will be inserted here -->
+    </nav>
+</main>
+<footer>
+    <p>©RentFlat 2024. All Rights Reserved</p>
+</footer>
+
+<script type="module" src="asserts/events/allFlats.js"></script>
+</body>
+
+</html>

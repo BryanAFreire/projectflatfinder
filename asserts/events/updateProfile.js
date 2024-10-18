@@ -2,6 +2,7 @@ import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
 import {listProfile} from "./utils/profileMenu.js";
 import {userGreeting} from "./utils/userGreeting.js";
 import {changeMenuBurger} from "./utils/burgerMenu.js";
+import {decodeJWT} from "./utils/getUserStorage.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -33,13 +34,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         return;
     }
 
-    const decodeJWT = (token) => {
-        const parts = token.split('.');
-        if (parts.length !== 3) {
-            throw new Error('Invalid JWT');
-        }
-        return JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
-    };
+
 
     const checkTokenExpiration = () => {
         const decoded = decodeJWT(token);
