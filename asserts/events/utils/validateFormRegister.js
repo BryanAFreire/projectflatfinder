@@ -3,26 +3,26 @@ import { createErrorMessage } from "./createMessageError.js";
 import { deleteErrorMessage } from "./deleteMessageError.js";
 
 export function validateFormRegister() {
+    const firstNameInput = document.getElementById("first-name");
+    const lastNameInput = document.getElementById("last-name");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const confirmPasswordInput = document.getElementById("confirm-password");
-    const firstNameInput = document.getElementById("first-name");
-    const lastNameInput = document.getElementById("last-name");
     const birthDateInput = document.getElementById("birth-date");
     const registerButton = document.getElementById("register-button");
     let isValid = true;
 
     const validateRegister = () => {
+        const firstNameValid = firstNameInput.value.trim().length >= 2;
+        const lastNameValid = lastNameInput.value.trim().length >= 2;
         const emailValid = emailInput.validity.valid && emailInput.value.trim() !== "";
         const passwordValid = passwordInput.value.trim().length >= 6;
         const confirmPasswordValid = confirmPasswordInput.value.trim() === passwordInput.value.trim();
-        const firstNameValid = firstNameInput.value.trim().length >= 2;
-        const lastNameValid = lastNameInput.value.trim().length >= 2;
         const birthDateValid = birthDateInput.value.trim() !== "";
         const age = calculateAge(birthDateInput);
         const ageValid = age >= 18 && age <= 120;
 
-        isValid = emailValid && passwordValid && confirmPasswordValid && firstNameValid && lastNameValid && birthDateValid && ageValid;
+        isValid = firstNameValid && lastNameValid && emailValid && passwordValid && confirmPasswordValid  && birthDateValid && ageValid;
 
         if (!firstNameValid) {
             createErrorMessage(firstNameInput, "First name must be at least 2 characters.");

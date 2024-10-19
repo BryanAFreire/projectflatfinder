@@ -1,7 +1,7 @@
 import { validateFormRegister } from './validateFormRegister.js';
-import {displaySpinner} from "./displaySpinner.js";
-import {startSession} from "./startSession.js";
-import {createErrorMessage} from "./createMessageError.js";
+import { displaySpinner } from "./displaySpinner.js";
+import { startSession } from "./startSession.js";
+import { createErrorMessage } from "./createMessageError.js";
 
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -13,19 +13,19 @@ const birthDate = document.querySelector('#birth-date');
 const container = document.querySelector('.container');
 const containerSpinner = document.querySelector('.spinner');
 
-function User(email, password, firstName, lastName, birthDate) {
-    this.email = email;
-    this.password = password;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.birthDate = birthDate;
-}
+
 
 export function setUserStorage(event) {
     event.preventDefault();
 
-    if (!validateFormRegister()) {
-        return;
+    validateFormRegister();
+
+    function User(email, password, firstName, lastName, birthDate) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
     }
 
     const user = new User(

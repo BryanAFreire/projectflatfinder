@@ -6,7 +6,6 @@ export function validateFormFlat() {
     const street_name = document.querySelector("#street_name");
     const street_number = document.querySelector("#street_number");
     const area_size = document.querySelector("#area_size");
-    const has_ac = document.querySelector("#has_ac");
     const year_built = document.querySelector("#year_built");
     const rent_price = document.querySelector("#rent_price");
     const date_available = document.querySelector("#date_available");
@@ -18,16 +17,15 @@ export function validateFormFlat() {
     date_available.setAttribute('min', today);
 
     const validateFlat = () => {
-        const cityValid = city.value.trim().length > 0;
+        const cityValid = city.value.trim() !== "";
         const streetNameValid = street_name.value.trim().length > 0;
         const streetNumberValid = /^[0-9]+$/.test(street_number.value.trim());
         const areaSizeValid = /^[0-9]+(\.[0-9]{1})?$/.test(area_size.value.trim());
-        const hasAcValid = has_ac.value.trim() !== "Select";
         const yearBuiltValid = /^[0-9]{4}$/.test(year_built.value.trim());
         const rentPriceValid = /^[0-9]+(\.[0-9]{1})?$/.test(rent_price.value.trim());
         const dateAvailableValid = date_available.value.trim() !== "" && new Date(date_available.value) >= new Date(today);
 
-        isValid = cityValid && streetNameValid && streetNumberValid && areaSizeValid && hasAcValid && yearBuiltValid && rentPriceValid && dateAvailableValid;
+        isValid = cityValid && streetNameValid && streetNumberValid && areaSizeValid && yearBuiltValid && rentPriceValid && dateAvailableValid;
 
         if (!cityValid) {
             createErrorMessage(city, "City can't be empty.");
@@ -48,15 +46,9 @@ export function validateFormFlat() {
         }
 
         if (!areaSizeValid) {
-            createErrorMessage(area_size, "Area size must be a valid number with up to one decimal place.");
+            createErrorMessage(area_size, "Area size must be a valid number.");
         } else {
             deleteErrorMessage(area_size);
-        }
-
-        if (!hasAcValid) {
-            createErrorMessage(has_ac, "Please select if the flat has AC.");
-        } else {
-            deleteErrorMessage(has_ac);
         }
 
         if (!yearBuiltValid) {
