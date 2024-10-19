@@ -2,6 +2,8 @@ import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
 import {listProfile} from "./utils/profileMenu.js";
 import {userGreeting} from "./utils/userGreeting.js";
 import {changeMenuBurger} from "./utils/burgerMenu.js";
+import {updateUser} from "./utils/updateUser.js";
+import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -41,20 +43,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         return JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
     };
 
-    const checkTokenExpiration = () => {
-        const decoded = decodeJWT(token);
-        const currentTime = Math.floor(Date.now() / 100);
-        if (currentTime >= decoded.exp) {
-            localStorage.removeItem('token');
-            setTimeout(() => {
-                alert('Your session has expired. Please log in again.');
-                window.location.href = './index.html';
-            }, 0);
-        }
-    };
-
     // Check token expiration every second
-    setInterval(checkTokenExpiration, 1000);
+    setInterval(() => checkTokenExpiration(token), 1000);
 
     try {
         const decoded = decodeJWT(token);
@@ -77,38 +67,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     const btnSave = document.querySelector('#btn-save');
     if (btnSave) {
-        btnSave.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (token) {
-                try {
-                    const updatedUser = {
-                        email: email.value,
-                        password: password.value,
-                        firstName: firstName.value,
-                        lastName: lastName.value,
-                        birthDate: birthDate.value
-                    };
-
-                    // Update the users array in localStorage
-                    const users = JSON.parse(localStorage.getItem('users')) || [];
-                    const userIndex = users.findIndex(user => user.email === email.value);
-                    if (userIndex !== -1) {
-                        users[userIndex] = updatedUser;
-                        localStorage.setItem('users', JSON.stringify(users));
-                        console.log('User updated successfully in localStorage.');
-
-                        // Clear the token and redirect to index.html
-                        localStorage.removeItem('token');
-                        window.location.href = './index.html';
-                    } else {
-                        console.log('User not found in localStorage.');
-                    }
-                } catch (error) {
-                    console.error('Error updating the user data:', error);
-                }
-            } else {
-                console.log('No token found in localStorage.');
-            }
-        });
+        btnSave.addEventListener('click', updateUser);
     }
 });

@@ -3,22 +3,19 @@ import { displaySpinner } from "./displaySpinner.js";
 import { startSession } from "./startSession.js";
 import { createErrorMessage } from "./createMessageError.js";
 
-let users = JSON.parse(localStorage.getItem('users')) || [];
-
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
-const firstName = document.querySelector('#first-name');
-const lastName = document.querySelector('#last-name');
-const birthDate = document.querySelector('#birth-date');
-const container = document.querySelector('.container');
-const containerSpinner = document.querySelector('.spinner');
-
-
-
 export function setUserStorage(event) {
     event.preventDefault();
 
-    validateFormRegister();
+
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#password');
+    const firstName = document.querySelector('#first-name');
+    const lastName = document.querySelector('#last-name');
+    const birthDate = document.querySelector('#birth-date');
+    const container = document.querySelector('.container');
+    const containerSpinner = document.querySelector('.spinner');
 
     function User(email, password, firstName, lastName, birthDate) {
         this.email = email;

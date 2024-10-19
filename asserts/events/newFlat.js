@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     if (profileIco) {
         profileIco.addEventListener('click', listProfile)
     }
+
     const city = document.querySelector('#city');
     if (city) {
         city.addEventListener('keyup', loadCities)

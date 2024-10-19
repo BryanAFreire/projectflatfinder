@@ -10,8 +10,8 @@ export function userGreeting() {
             const decoded = decodeJWT(token);
             console.log('Decoded Token:', decoded);
 
-            const firstName = decoded.payload.username.firstName.toUpperCase();
-            const lastName = decoded.payload.username.lastName.toUpperCase();
+            const firstName = decoded.username.firstName.toUpperCase();
+            const lastName = decoded.username.lastName.toUpperCase();
             fullName.textContent = `${firstName} ${lastName}`;
         } catch (error) {
             console.error('Error decoding the token:', error);

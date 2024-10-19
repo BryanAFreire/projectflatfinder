@@ -1,6 +1,7 @@
 import { validateFormFlat } from "./validateFormFlat.js";
 import { displaySpinner } from "./displaySpinner.js";
 import { decodeJWT } from "./getUserStorage.js";
+import {addNumberValidation} from "./addNumberValidation.js";
 
 const city = document.querySelector("#city");
 const street_name = document.querySelector("#street_name");
@@ -11,13 +12,13 @@ const year_built = document.querySelector("#year_built");
 const rent_price = document.querySelector("#rent_price");
 const date_available = document.querySelector("#date_available");
 
-document.addEventListener('DOMContentLoaded', () => {
-
-
-});
-
 const createFlat = (e) => {
     e.preventDefault();
+
+    addNumberValidation(street_number);
+    addNumberValidation(area_size, true);
+    addNumberValidation(year_built);
+    addNumberValidation(rent_price, true);
 
     if (!validateFormFlat()) {
         return;
@@ -73,6 +74,4 @@ const createFlat = (e) => {
         container.style.display = 'flex';
         window.location.href = './home.html';
     }, 3000);
-};
-
-export { createFlat };
+}; export { createFlat };

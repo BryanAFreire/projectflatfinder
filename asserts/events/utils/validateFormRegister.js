@@ -18,6 +18,7 @@ export function validateFormRegister() {
         const emailValid = emailInput.validity.valid && emailInput.value.trim() !== "";
         const passwordValid = passwordInput.value.trim().length >= 6;
         const confirmPasswordValid = confirmPasswordInput.value.trim() === passwordInput.value.trim();
+        const confirmPasswordEmpty = confirmPasswordInput.value.trim() === "";
         const birthDateValid = birthDateInput.value.trim() !== "";
         const age = calculateAge(birthDateInput);
         const ageValid = age >= 18 && age <= 120;
@@ -50,7 +51,10 @@ export function validateFormRegister() {
 
         if (!confirmPasswordValid) {
             createErrorMessage(confirmPasswordInput, "Passwords do not match.");
-        } else {
+        } else if (confirmPasswordEmpty) {
+            createErrorMessage(confirmPasswordInput, "Confirm password cannot be empty.");
+        }
+        else {
             deleteErrorMessage(confirmPasswordInput);
         }
 

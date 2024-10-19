@@ -8,22 +8,8 @@ export function decodeJWT(token) {
     const parts = token.split('.');
 
     if (parts.length !== 3) {
-        throw new Error('JWT inválido');
+        throw new Error('Invalid JWT');
     }
 
-    const decodeJWT = (token) => {
-        const parts = token.split('.');
-        if (parts.length !== 3) {
-            throw new Error('Invalid JWT');
-        }
-        return JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
-    };
-
-    const header = base64UrlDecode(parts[0]);
-    const payload = base64UrlDecode(parts[1]);
-
-    return {
-        header: header,
-        payload: payload
-    };
+    return base64UrlDecode(parts[1]);
 }
