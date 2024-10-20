@@ -1,11 +1,13 @@
-import { validateFormRegister } from './validateFormRegister.js';
+
 import { displaySpinner } from "./displaySpinner.js";
 import { startSession } from "./startSession.js";
 import { createErrorMessage } from "./createMessageError.js";
+import {validateFormRegister} from "./validateFormRegister.js";
 
 export function setUserStorage(event) {
     event.preventDefault();
 
+    validateFormRegister();
 
     let users = JSON.parse(localStorage.getItem('users')) || [];
 

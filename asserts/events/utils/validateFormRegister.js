@@ -1,6 +1,7 @@
 import { calculateAge } from './calculateAge.js';
 import { createErrorMessage } from "./createMessageError.js";
 import { deleteErrorMessage } from "./deleteMessageError.js";
+import {validatePassword} from "./validatePasswordFormat.js";
 
 export function validateFormRegister() {
     const firstNameInput = document.getElementById("first-name");
@@ -12,11 +13,10 @@ export function validateFormRegister() {
     const registerButton = document.getElementById("register-button");
     let isValid = true;
 
-    const validateRegister = () => {
-        const firstNameValid = firstNameInput.value.trim().length >= 2;
-        const lastNameValid = lastNameInput.value.trim().length >= 2;
+        const firstNameValid = firstNameInput.value.trim().length > 1;
+        const lastNameValid = lastNameInput.value.trim().length > 1;
         const emailValid = emailInput.validity.valid && emailInput.value.trim() !== "";
-        const passwordValid = passwordInput.value.trim().length >= 6;
+        const passwordValid = validatePassword(passwordInput.value.trim());
         const confirmPasswordValid = confirmPasswordInput.value.trim() === passwordInput.value.trim();
         const confirmPasswordEmpty = confirmPasswordInput.value.trim() === "";
         const birthDateValid = birthDateInput.value.trim() !== "";
@@ -44,7 +44,7 @@ export function validateFormRegister() {
         }
 
         if (!passwordValid) {
-            createErrorMessage(passwordInput, "Password must be at least 6 characters.");
+            createErrorMessage(passwordInput, "Password must be at least 6 characters, contain letters, numbers, and a special character.");
         } else {
             deleteErrorMessage(passwordInput);
         }
@@ -67,29 +67,4 @@ export function validateFormRegister() {
         }
 
         registerButton.disabled = !isValid;
-    };
-
-    firstNameInput.addEventListener("keyup", validateRegister);
-    lastNameInput.addEventListener("keyup", validateRegister);
-    emailInput.addEventListener("keyup", validateRegister);
-    passwordInput.addEventListener("keyup", validateRegister);
-    confirmPasswordInput.addEventListener("keyup", validateRegister);
-    birthDateInput.addEventListener("keyup", validateRegister);
-
-    firstNameInput.addEventListener("blur", validateRegister);
-    lastNameInput.addEventListener("blur", validateRegister);
-    emailInput.addEventListener("blur", validateRegister);
-    passwordInput.addEventListener("blur", validateRegister);
-    confirmPasswordInput.addEventListener("blur", validateRegister);
-    birthDateInput.addEventListener("blur", validateRegister);
-
-    firstNameInput.addEventListener("change", validateRegister);
-    lastNameInput.addEventListener("change", validateRegister);
-    emailInput.addEventListener("change", validateRegister);
-    passwordInput.addEventListener("change", validateRegister);
-    confirmPasswordInput.addEventListener("change", validateRegister);
-    birthDateInput.addEventListener("change", validateRegister);
-
-    validateRegister();
-    return isValid;
 }
