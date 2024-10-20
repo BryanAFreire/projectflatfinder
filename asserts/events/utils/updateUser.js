@@ -1,13 +1,6 @@
 export function updateUser(e) {
         e.preventDefault();
     const token = localStorage.getItem('token');
-
-    // Redirect to 404 page if no token is found
-    if (!token) {
-        window.location.href = './404.html';
-        return;
-    }
-
     const email = document.querySelector('#email');
     const password = document.querySelector('#password');
     const firstName = document.querySelector('#first_name');
@@ -19,8 +12,8 @@ export function updateUser(e) {
                 const updatedUser = {
                     email: email.value,
                     password: password.value,
-                    firstName: firstName.value,
-                    lastName: lastName.value,
+                    firstName: firstName.value.toUpperCase(),
+                    lastName: lastName.value.toUpperCase(),
                     birthDate: birthDate.value
                 };
 

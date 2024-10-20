@@ -1,19 +1,19 @@
 import { startSession } from "./utils/startSession.js";
 import { validateFormLogin } from "./utils/validateFormLogin.js";
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    event.preventDefault();
+document.addEventListener("DOMContentLoaded", (e) => {
+    e.preventDefault();
 
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
 
     if (emailInput) {
-        emailInput.addEventListener("keyup", validateFormLogin);
+        emailInput.addEventListener("keypress", validateFormLogin);
         emailInput.addEventListener("blur", validateFormLogin);
     }
 
     if (passwordInput) {
-        passwordInput.addEventListener("keyup", validateFormLogin);
+        passwordInput.addEventListener("keypress", validateFormLogin);
         passwordInput.addEventListener("blur", validateFormLogin);
     }
 

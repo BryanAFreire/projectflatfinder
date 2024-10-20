@@ -2,7 +2,7 @@ import {decodeJWT} from "./getUserStorage.js";
 
 export function checkTokenExpiration(token) {
     const decoded = decodeJWT(token);
-    const currentTime = Math.floor(Date.now() / 100);
+    const currentTime = Math.floor(Date.now() / 1000);
     if (currentTime >= decoded.exp) {
         localStorage.removeItem('token');
         setTimeout(() => {

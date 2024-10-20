@@ -4,9 +4,23 @@ import {userGreeting} from "./utils/userGreeting.js";
 import {changeMenuBurger} from "./utils/burgerMenu.js";
 import {updateUser} from "./utils/updateUser.js";
 import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
+import {decodeJWT} from "./utils/getUserStorage.js";
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
+const token = localStorage.getItem('token');
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const firstName = document.querySelector('#first_name');
+const lastName = document.querySelector('#last_name');
+const birthDate = document.querySelector('#birth_date');
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Redirect to 401 page if no token is found
+    if (!token) {
+        window.location.href = './401.html';
+        console.info(!token);
+        return;
+    }
 
     userGreeting();
 
@@ -21,27 +35,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     if (burgerMenu) {
         burgerMenu.addEventListener('click', changeMenuBurger);
     }
-
-    const token = localStorage.getItem('token');
-    const email = document.querySelector('#email');
-    const password = document.querySelector('#password');
-    const firstName = document.querySelector('#first_name');
-    const lastName = document.querySelector('#last_name');
-    const birthDate = document.querySelector('#birth_date');
-
-    // Redirect to 404 page if no token is found
-    if (!token) {
-        window.location.href = './404.html';
-        return;
-    }
-
-    const decodeJWT = (token) => {
-        const parts = token.split('.');
-        if (parts.length !== 3) {
-            throw new Error('Invalid JWT');
-        }
-        return JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
-    };
 
     // Check token expiration every second
     setInterval(() => checkTokenExpiration(token), 1000);
@@ -61,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         birthDate.value = birthUpdate || '';
     } catch (error) {
         console.error('Error decoding the token:', error);
-        window.location.href = './404.html';
+        window.location.href = './401.html';
         return;
     }
 
