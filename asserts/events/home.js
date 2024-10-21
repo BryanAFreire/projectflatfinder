@@ -5,7 +5,8 @@ import { dataFavoriteFlat } from './utils/getFavoriteFlats.js';
 import { changeMenuBurger } from "./utils/burgerMenu.js";
 import {logOut} from "./utils/logOut.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault()
 
     userGreeting();
 

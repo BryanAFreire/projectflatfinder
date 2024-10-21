@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const passwordInput = document.getElementById("password");
 
     if (emailInput) {
-        emailInput.addEventListener("keypress", validateFormLogin);
+        emailInput.addEventListener("input", validateFormLogin);
         emailInput.addEventListener("blur", validateFormLogin);
     }
 
     if (passwordInput) {
-        passwordInput.addEventListener("keypress", validateFormLogin);
+        passwordInput.addEventListener("input", validateFormLogin);
         passwordInput.addEventListener("blur", validateFormLogin);
     }
 

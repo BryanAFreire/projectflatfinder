@@ -22,7 +22,7 @@ export function getAllFlats() {
 
     // Decode the token to get the email
     const decodedToken = decodeJWT(token);
-    const userEmail = decodedToken.payload.username.email;
+    const userEmail = decodedToken.username.email;
 
     // Filter flats by logged-in user
     const userFlats = storedFlats.filter(flat => flat.email === userEmail);
