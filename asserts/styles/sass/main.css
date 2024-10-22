@@ -114,6 +114,46 @@ li {
   width: 100%;
 }
 
+.filter {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.container-filter {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5em;
+  width: 100%;
+}
+
+.container-filter input {
+  width: 100%;
+  border: 1px solid var(--first-color);
+  border-radius: 5px;
+}
+
+.container-items-filters {
+  margin: 5px 0;
+}
+
+.container-items-filters-price, .container-items-filters-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-items-filters-price input, .container-items-filters-price span {
+  margin: 0 1px;
+  width: 100%;
+  text-align: center;
+}
+
+.container-items-filters-price span {
+  width: 20%;
+}
+
 .h1 {
   font-size: 2.5rem;
   font-weight: 700;
