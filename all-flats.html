@@ -39,7 +39,40 @@
 </div>
 <main class="container container-flats">
     <div class="h2">All Flats</div>
-
+    <section class="filter">
+        <div class="container-filter">
+            <div class="container-items-filters">
+                <label for="city">City</label>
+                <input type="text" name="city" id="city">
+            </div>
+            <div class="container-items-filters">
+                <label>Price</label>
+                <div class="container-items-filters-price">
+                    <input type="text" name="min" id="min-price" placeholder="min" maxlength="6">
+                    <span>to</span>
+                    <input type="text" name="max" id="max-price" placeholder="max" maxlength="6">
+                </div>
+            </div>
+            <div class="container-items-filters">
+                <label>Area</label>
+                <div class="container-items-filters-area">
+                    <input type="text" name="min" id="min-area" placeholder="min" maxlength="6">
+                    <span>to</span>
+                    <input type="text" name="max" id="max-area" placeholder="max" maxlength="6">
+                </div>
+            </div>
+            
+        </div>
+        <div class="container-filter">
+            <label for="order">Order by</label>
+            <select name="order" id="order">
+                <option value="default">Default</option>
+                <option value="city">City</option>
+                <option value="price">Price</option>
+                <option value="size">Size</option>
+            </select>
+        </div>
+    </section>
     <section class="table-responsive">
         <table id="data-table">
             <thead>
