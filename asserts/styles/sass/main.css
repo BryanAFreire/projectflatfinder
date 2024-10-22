@@ -271,6 +271,13 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.button-filter {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 2px 0;
+}
+
 .primary-button {
   border: 1px solid var(--first-color);
   background-color: var(--first-color);
