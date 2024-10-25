@@ -33,7 +33,7 @@ const createFlat = (e) => {
 
     // Decode the token to get the email
     const decodedToken = decodeJWT(token);
-    const userEmail = decodedToken.payload.username.email;
+    const userEmail = decodedToken.username.email;
     console.info('dataUser:', userEmail);
 
     // Set default value for has_ac if not selected
