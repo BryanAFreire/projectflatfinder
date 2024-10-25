@@ -43,13 +43,14 @@
   flex-direction: column;
   margin: 0 .5em;
   width: 100%;
+
+  & input{
+    width: 100%;
+    border: 1px solid var(--first-color);
+    border-radius: 5px;
+  }
 }
 
-.container-filter input{
-  width: 100%;
-  border: 1px solid var(--first-color);
-  border-radius: 5px;
-}
 .container-items-filters{
   margin: 5px 0;
 }
@@ -62,7 +63,7 @@
 .container-items-filters-price input, .container-items-filters-price span{
   margin: 0 1px;
   width: 100%;
-  text-align: center;
+
 }
 
 .container-items-filters-price span{
