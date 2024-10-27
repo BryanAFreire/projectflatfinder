@@ -1,7 +1,7 @@
 import { validateFormFlat } from "./validateFormFlat.js";
 import { displaySpinner } from "./displaySpinner.js";
-import { decodeJWT } from "./getUserStorage.js";
 import {addNumberValidation} from "./addNumberValidation.js";
+import {toggleFavorite} from "./toggleFavoriteFlat.js";
 
 const city = document.querySelector("#city");
 const street_name = document.querySelector("#street_name");
@@ -24,32 +24,21 @@ const createFlat = (e) => {
         return;
     }
 
-    // Get the token from local storage
-    const token = localStorage.getItem('token');
-    if (!token) {
-        console.error('No token found in local storage.');
-        return;
-    }
-
-    // Decode the token to get the email
-    const decodedToken = decodeJWT(token);
-    const userEmail = decodedToken.username.email;
-    console.info('dataUser:', userEmail);
-
     // Set default value for has_ac if not selected
     const hasAcValue = has_ac.value.trim() === "Yes" ? "Yes" : "No";
+    
+    const date = new Date();
 
     const flat = {
-        city: city.value.toLowerCase(),
+        id: date.getTime(),
+        city: city.value.toUpperCase(),
         street_name: street_name.value.toLowerCase(),
         street_number: street_number.value.toLowerCase(),
         area_size: area_size.value,
         has_ac: hasAcValue,
         yearBuilt: year_built.value,
         rent_price: rent_price.value,
-        date_available: date_available.value,
-        favorite: true,
-        email: userEmail
+        date_available: date_available.value
     };
 
     const flats = JSON.parse(localStorage.getItem('flats')) || [];
@@ -64,6 +53,8 @@ const createFlat = (e) => {
     year_built.value = "";
     rent_price.value = "";
     date_available.value = "";
+    
+    toggleFavorite(flat.id,e);
 
     displaySpinner();
 

@@ -1,8 +1,9 @@
-import { decodeJWT } from "./getUserStorage.js";
-import { NoFavoriteFlat } from "./noFavoriteFlat.js";
+import { toggleFavorite } from './toggleFavoriteFlat.js';
+import { checkFlatFavorite } from './checkFavoriteFlat.js';
 
 export function getAllFlats() {
     let storedFlats = JSON.parse(localStorage.getItem('flats')) || [];
+    let storedFavorites = JSON.parse(localStorage.getItem('flats_favorites')) || [];
     const noFavoriteFlat = document.querySelector("#no-favorites-message");
     const container = document.querySelector(".container");
     const table = document.getElementById('data-table');
@@ -13,27 +14,13 @@ export function getAllFlats() {
     tableBody.innerHTML = '';
     tableHead.innerHTML = '';
     
-    // Get the token from local storage
-    const token = localStorage.getItem('token');
-    if (!token) {
-        console.error('No token found in local storage.');
-        return;
-    }
-    
-    // Decode the token to get the email
-    const decodedToken = decodeJWT(token);
-    const userEmail = decodedToken.username.email;
-    
-    // Filter flats by logged-in user
-    const userFlats = storedFlats.filter(flat => flat.email === userEmail);
-    
-    if (userFlats.length > 0) {
+    if (storedFlats != null && Array.isArray(storedFlats)) {
         noFavoriteFlat.style.display = 'none';
         container.style.display = 'flex';
         
         // Insert column headers
         const headerRow = tableHead.insertRow();
-        const keys = Object.keys(userFlats[0]).filter(key => key !== 'email' && key !== 'favorite');
+        const keys = Object.keys(storedFlats[0]).filter(key => key);
         keys.forEach(key => {
             const headerCell = document.createElement('th');
             headerCell.textContent = key;
@@ -42,11 +29,11 @@ export function getAllFlats() {
         
         // Add "Favorite" column header
         const favoriteHeaderCell = document.createElement('th');
-        favoriteHeaderCell.textContent = 'Favorite';
+        favoriteHeaderCell.textContent = 'favorite';
         headerRow.appendChild(favoriteHeaderCell);
         
         // Insert rows
-        userFlats.forEach(flat => {
+        storedFlats.forEach(flat => {
             const row = tableBody.insertRow();
             keys.forEach(key => {
                 const cell = row.insertCell();
@@ -56,20 +43,17 @@ export function getAllFlats() {
             // Add "Favorite" button
             const favoriteCell = row.insertCell();
             const favoriteButton = document.createElement('button');
-            favoriteButton.textContent = flat.favorite ? '★' : '☆';
-            favoriteButton.onclick = () => {
-                const rowIndex = storedFlats.indexOf(flat);
-                if (rowIndex > -1) {
-                    storedFlats[rowIndex].favorite = !storedFlats[rowIndex].favorite;
-                    localStorage.setItem('flats', JSON.stringify(storedFlats));
-                    getAllFlats(); // Refresh the table
-                }
-            };
+            favoriteButton.innerText = checkFlatFavorite(flat.id) ? '★' : '☆';
+            favoriteButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleFavorite(flat.id, e);
+            });
             favoriteCell.appendChild(favoriteButton);
         });
     } else {
         // No flats found
-        NoFavoriteFlat();
+        noFavoriteFlat.style.display = 'block';
+        container.style.display = 'none';
     }
     
     // CSS for horizontal scroll
