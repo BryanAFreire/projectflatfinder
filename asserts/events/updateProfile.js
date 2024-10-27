@@ -6,15 +6,16 @@ import {updateUser} from "./utils/updateUser.js";
 import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
 import {decodeJWT} from "./utils/getUserStorage.js";
 
-const token = localStorage.getItem('token');
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
-const firstName = document.querySelector('#first_name');
-const lastName = document.querySelector('#last_name');
-const birthDate = document.querySelector('#birth_date');
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    
+    const token = localStorage.getItem('token');
+    const email = document.querySelector('#email');
+    const password = document.querySelector('#password');
+    const firstName = document.querySelector('#first_name');
+    const lastName = document.querySelector('#last_name');
+    const birthDate = document.querySelector('#birth_date');
+    
     // Redirect to 401 page if no token is found
     if (!token) {
         window.location.href = './401.html';
