@@ -14,7 +14,5 @@ export function userGreeting() {
         } catch (error) {
             console.error('Error decoding the token:', error);
         }
-    } else {
-        console.error('No token found in localStorage.');
     }
 }

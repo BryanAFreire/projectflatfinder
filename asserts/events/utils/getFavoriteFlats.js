@@ -21,6 +21,7 @@ export function dataFavoriteFlat() {
     validateSession(token);
     
     // Decode the token to get the email
+    if (token){
     const decodedToken = decodeJWT(token);
     const userEmail = decodedToken.username.email;
     
@@ -29,42 +30,44 @@ export function dataFavoriteFlat() {
         return favorites.some(fav => fav.idFlat === flat.id && fav.emailUser === userEmail);
     });
     
-    if (favoriteFlats.length > 0) {
-        noFavoriteFlat.style.display = 'none';
-        container.style.display = 'flex';
-        
-        // Insert column headers
-        const headerRow = tableHead.insertRow();
-        const keys = Object.keys(favoriteFlats[0]).filter(key => key);
-        keys.forEach(key => {
-            const headerCell = document.createElement('th');
-            headerCell.textContent = key;
-            headerRow.appendChild(headerCell);
-        });
-        
-        // Add "Remove" column header
-        const removeHeaderCell = document.createElement('th');
-        removeHeaderCell.textContent = 'favorite';
-        headerRow.appendChild(removeHeaderCell);
-        
-        // Insert rows
-        favoriteFlats.forEach(flat => {
-            const row = tableBody.insertRow();
+    
+        if (favoriteFlats.length > 0) {
+            noFavoriteFlat.style.display = 'none';
+            container.style.display = 'flex';
+            
+            // Insert column headers
+            const headerRow = tableHead.insertRow();
+            const keys = Object.keys(favoriteFlats[0]).filter(key => key);
             keys.forEach(key => {
-                const cell = row.insertCell();
-                cell.textContent = flat[key];
+                const headerCell = document.createElement('th');
+                headerCell.textContent = key;
+                headerRow.appendChild(headerCell);
             });
             
-            // Add "Remove" button
-            const removeCell = row.insertCell();
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remove';
-            removeButton.onclick = (e) => removeFavorite(flat.id, e);
-            removeCell.appendChild(removeButton);
-        });
-    } else {
-        // No favorite flats found
-        NoFavoriteFlat();
+            // Add "Remove" column header
+            const removeHeaderCell = document.createElement('th');
+            removeHeaderCell.textContent = 'favorite';
+            headerRow.appendChild(removeHeaderCell);
+            
+            // Insert rows
+            favoriteFlats.forEach(flat => {
+                const row = tableBody.insertRow();
+                keys.forEach(key => {
+                    const cell = row.insertCell();
+                    cell.textContent = flat[key];
+                });
+                
+                // Add "Remove" button
+                const removeCell = row.insertCell();
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.onclick = (e) => removeFavorite(flat.id, e);
+                removeCell.appendChild(removeButton);
+            });
+        } else {
+            // No favorite flats found
+            NoFavoriteFlat();
+        }
     }
     
     // CSS for horizontal scroll
