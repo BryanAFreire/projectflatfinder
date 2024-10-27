@@ -5,17 +5,23 @@ import {listProfile} from "./utils/profileMenu.js";
 import {changeMenuBurger} from "./utils/burgerMenu.js";
 import {filterFlats} from "./utils/filtersFlats.js";
 import {orderTable} from "./utils/orderTable.js";
+import {logOut} from "./utils/logOut.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
+    e.preventDefault()
     
     userGreeting();
     
     document.addEventListener('click', displayNoneMenuPerfil);
     
+    const logOutLink = document.querySelector('#logout_link');
+    if(logOutLink){
+        logOutLink.addEventListener('click', logOut)
+    }
+    
     const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
-        profileIco.addEventListener('click', listProfile);
+        profileIco.addEventListener('click', listProfile)
     }
     
     const burgerMenu = document.querySelector('.burger-menu');
@@ -29,9 +35,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.getElementById('order').addEventListener('change', (e) => {
         const column = e.target.value;
         const columnIndex = {
-            'city': 0,  // Assuming 'city' is the first column
-            'price': 6,
-            'size': 3
+            'city': 1,  // Assuming 'city' is the first column
+            'price': 7,
+            'size': 4
         }[column];
         
         if (columnIndex !== undefined) {
@@ -40,6 +46,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
             console.error('Invalid column selected for ordering.');
         }
     });
-    
-    filterFlats(new Event('init'));
 });
