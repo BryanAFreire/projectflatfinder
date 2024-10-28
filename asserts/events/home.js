@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault()
     const token = localStorage.getItem('token');
     
-    
     validateSession(token);
     
     userGreeting();
