@@ -8,7 +8,7 @@ import {validateSession} from "./utils/verifySession.js";
 import {logOut} from "./utils/logOut.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const token = localStorage.getItem('token');
     
     validateSession(token);
@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     
     const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
-        profileIco.addEventListener('click', listProfile)
+        profileIco.addEventListener('click', listProfile);
     }
     
     const logOutLink = document.querySelector('#logout_link');
     if(logOutLink){
-        logOutLink.addEventListener('click', logOut)
+        logOutLink.addEventListener('click', logOut);
     }
     
     const burgerMenu = document.querySelector('.burger-menu');

@@ -5,22 +5,18 @@ import { changeMenuBurger } from "./utils/burgerMenu.js";
 import { updateUser } from "./utils/updateUser.js";
 import { checkTokenExpiration } from "./utils/checkingExpirationToken.js";
 import { decodeJWT } from "./utils/getUserStorage.js";
+import {validateSession} from "./utils/verifySession.js";
+import {logOut} from "./utils/logOut.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
     const token = localStorage.getItem('token');
     const email = document.querySelector('#email');
-    const newPassword = document.querySelector('#new-password');
-    const confirmPassword = document.querySelector('#confirm-password');
     const firstName = document.querySelector('#first_name');
     const lastName = document.querySelector('#last_name');
     const birthDate = document.querySelector('#birth_date');
     
-    // Redirect to 401 page if no token is found
-    if (!token) {
-        window.location.href = './401.html';
-        console.info(!token);
-        return;
-    }
+    validateSession(token);
     
     userGreeting();
     
@@ -29,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
         profileIco.addEventListener('click', listProfile);
+    }
+    
+    const logOutLink = document.querySelector('#logout_link');
+    if(logOutLink){
+        logOutLink.addEventListener('click', logOut);
     }
     
     const burgerMenu = document.querySelector('.burger-menu');
@@ -52,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lastName.value = lastNameUpdate || '';
         birthDate.value = birthUpdate || '';
     } catch (error) {
-        console.error('Error decoding the token:', error);
         window.location.href = './401.html';
         return;
     }

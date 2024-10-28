@@ -6,28 +6,36 @@ import {changeMenuBurger} from "./utils/burgerMenu.js";
 import {filterFlats} from "./utils/filtersFlats.js";
 import {orderTable} from "./utils/orderTable.js";
 import {logOut} from "./utils/logOut.js";
+import {validateSession} from "./utils/verifySession.js";
+import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    
+    validateSession(token);
     
     userGreeting();
     
     document.addEventListener('click', displayNoneMenuPerfil);
     
-    const logOutLink = document.querySelector('#logout_link');
-    if(logOutLink){
-        logOutLink.addEventListener('click', logOut)
-    }
-    
     const profileIco = document.querySelector('.content-profile');
     if (profileIco) {
-        profileIco.addEventListener('click', listProfile)
+        profileIco.addEventListener('click', listProfile);
+    }
+    
+    const logOutLink = document.querySelector('#logout_link');
+    if(logOutLink){
+        logOutLink.addEventListener('click', logOut);
     }
     
     const burgerMenu = document.querySelector('.burger-menu');
     if (burgerMenu) {
         burgerMenu.addEventListener('click', changeMenuBurger);
     }
+    
+    // Check token expiration every second
+    setInterval(() => checkTokenExpiration(token), 1000);
     
     getAllFlats();
     
