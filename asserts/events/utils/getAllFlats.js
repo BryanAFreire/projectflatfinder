@@ -43,7 +43,7 @@ export function getAllFlats() {
             // Add "Favorite" button
             const favoriteCell = row.insertCell();
             const favoriteButton = document.createElement('button');
-            favoriteButton.innerText = checkFlatFavorite(flat.id) ? '★' : '☆';
+            favoriteButton.textContent = checkFlatFavorite(flat.id) ? '★' : '☆';
             favoriteButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 toggleFavorite(flat.id, e);
