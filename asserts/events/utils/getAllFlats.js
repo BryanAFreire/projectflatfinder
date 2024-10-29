@@ -20,7 +20,7 @@ export function getAllFlats() {
         
         // Insert column headers
         const headerRow = tableHead.insertRow();
-        const keys = Object.keys(storedFlats[0]).filter(key => key);
+        const keys = Object.keys(storedFlats[0]).filter(key => key !== 'favorite');
         keys.forEach(key => {
             const headerCell = document.createElement('th');
             headerCell.textContent = key;

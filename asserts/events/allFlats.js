@@ -9,8 +9,7 @@ import {logOut} from "./utils/logOut.js";
 import {validateSession} from "./utils/verifySession.js";
 import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     
     validateSession(token);

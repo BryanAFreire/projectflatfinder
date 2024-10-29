@@ -37,7 +37,7 @@ export function dataFavoriteFlat() {
             
             // Insert column headers
             const headerRow = tableHead.insertRow();
-            const keys = Object.keys(favoriteFlats[0]).filter(key => key);
+            const keys = Object.keys(favoriteFlats[0]).filter(key => key !== 'favorite');
             keys.forEach(key => {
                 const headerCell = document.createElement('th');
                 headerCell.textContent = key;
