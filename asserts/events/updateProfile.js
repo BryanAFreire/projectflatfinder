@@ -38,10 +38,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     
     // Check token expiration every second
-    setInterval(() => checkTokenExpiration(token), 1000);
+    setInterval(() => checkTokenExpiration(token), 60*60*1000);
     
     const decoded = decodeJWT(token);
-    console.log('Payload:', decoded);
     const passwordUpdate = decoded.username?.password;
     try {
         const emailUpdate = decoded.username?.email;

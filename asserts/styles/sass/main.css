@@ -529,4 +529,33 @@ select {
   width: 100%;
 }
 
+/* sessionAlertModal.css */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-content {
+  background-color: var(--fifth-color);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid var(--sixth-color);
+  width: 80%;
+  color: var(--eighth-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal .modal-content #modalActionButton {
+  margin: 10px;
+}
+
 /*# sourceMappingURL=main.css.map */

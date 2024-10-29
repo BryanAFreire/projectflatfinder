@@ -7,8 +7,7 @@ import {checkTokenExpiration} from "./modules/checkingExpirationToken.js";
 import {validateSession} from "./modules/verifySession.js";
 import {logOut} from "./modules/logOut.js";
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     
     validateSession(token);
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     
     // Check token expiration every second
-    setInterval(() => checkTokenExpiration(token), 1000);
+    setInterval(() => checkTokenExpiration(token), 60*60*1000);
 
     dataFavoriteFlat();
 
