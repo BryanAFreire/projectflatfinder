@@ -1,5 +1,5 @@
-import { setUserStorage } from './utils/setUserStorage.js';
-import {validateFormRegister} from "./utils/validateFormRegister.js";
+import { setUserStorage } from './modules/setUserStorage.js';
+import {validateFormRegister} from "./modules/validateFormRegister.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();

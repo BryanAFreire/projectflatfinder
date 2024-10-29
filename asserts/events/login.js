@@ -1,5 +1,5 @@
-import { startSession } from "./utils/startSession.js";
-import { validateFormLogin } from "./utils/validateFormLogin.js";
+import { startSession } from "./modules/startSession.js";
+import { validateFormLogin } from "./modules/validateFormLogin.js";
 
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();

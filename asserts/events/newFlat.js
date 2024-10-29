@@ -1,13 +1,13 @@
-import {userGreeting} from "./utils/userGreeting.js";
-import {createFlat} from "./utils/createFlat.js";
-import {loadCities} from "./utils/getCities.js";
-import {loadYears} from "./utils/getYearBuilt.js";
-import {changeMenuBurger} from "./utils/burgerMenu.js";
-import {listProfile} from "./utils/profileMenu.js";
-import {displayNoneMenuPerfil} from "./utils/displayNoneMenuPerfil.js";
-import {logOut} from "./utils/logOut.js";
-import {validateSession} from "./utils/verifySession.js";
-import {checkTokenExpiration} from "./utils/checkingExpirationToken.js";
+import {userGreeting} from "./modules/userGreeting.js";
+import {createFlat} from "./modules/createFlat.js";
+import {loadCities} from "./modules/getCities.js";
+import {loadYears} from "./modules/getYearBuilt.js";
+import {changeMenuBurger} from "./modules/burgerMenu.js";
+import {listProfile} from "./modules/profileMenu.js";
+import {displayNoneMenuPerfil} from "./modules/displayNoneMenuPerfil.js";
+import {logOut} from "./modules/logOut.js";
+import {validateSession} from "./modules/verifySession.js";
+import {checkTokenExpiration} from "./modules/checkingExpirationToken.js";
 
 
 document.addEventListener('DOMContentLoaded', (e) => {

@@ -1,12 +1,12 @@
-import { displayNoneMenuPerfil } from "./utils/displayNoneMenuPerfil.js";
-import { listProfile } from "./utils/profileMenu.js";
-import { userGreeting } from "./utils/userGreeting.js";
-import { changeMenuBurger } from "./utils/burgerMenu.js";
-import { updateUser } from "./utils/updateUser.js";
-import { checkTokenExpiration } from "./utils/checkingExpirationToken.js";
-import { decodeJWT } from "./utils/getUserStorage.js";
-import {validateSession} from "./utils/verifySession.js";
-import {logOut} from "./utils/logOut.js";
+import { displayNoneMenuPerfil } from "./modules/displayNoneMenuPerfil.js";
+import { listProfile } from "./modules/profileMenu.js";
+import { userGreeting } from "./modules/userGreeting.js";
+import { changeMenuBurger } from "./modules/burgerMenu.js";
+import { updateUser } from "./modules/updateUser.js";
+import { checkTokenExpiration } from "./modules/checkingExpirationToken.js";
+import { decodeJWT } from "./modules/getUserStorage.js";
+import {validateSession} from "./modules/verifySession.js";
+import {logOut} from "./modules/logOut.js";
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
