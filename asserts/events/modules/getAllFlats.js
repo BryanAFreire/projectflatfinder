@@ -3,7 +3,6 @@ import { checkFlatFavorite } from './checkFavoriteFlat.js';
 
 export function getAllFlats() {
     let storedFlats = JSON.parse(localStorage.getItem('flats')) || [];
-    let storedFavorites = JSON.parse(localStorage.getItem('flats_favorites')) || [];
     const noFavoriteFlat = document.querySelector("#no-favorites-message");
     const container = document.querySelector(".container");
     const table = document.getElementById('data-table');
@@ -14,7 +13,7 @@ export function getAllFlats() {
     tableBody.innerHTML = '';
     tableHead.innerHTML = '';
     
-    if (storedFlats != null && Array.isArray(storedFlats)) {
+    if (storedFlats != null && Array.isArray(storedFlats) && storedFlats.length > 0) {
         noFavoriteFlat.style.display = 'none';
         container.style.display = 'flex';
         
@@ -52,7 +51,7 @@ export function getAllFlats() {
         });
     } else {
         // No flats found
-        noFavoriteFlat.style.display = 'block';
+        noFavoriteFlat.style.display = 'flex';
         container.style.display = 'none';
     }
     
