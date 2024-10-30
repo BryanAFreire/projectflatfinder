@@ -15,7 +15,14 @@ export function validateFormFlat() {
     // Set the min attribute for date_available to the current date
     const today = new Date().toISOString().split('T')[0];
     date_available.setAttribute('min', today);
-
+    
+    const scrollToFirstError = () => {
+        const firstErrorElement = document.querySelector('.error-message');
+        if (firstErrorElement) {
+            firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
+    
     const validateFlat = () => {
         const cityValid = city.value.trim() !== "";
         const streetNameValid = street_name.value.trim().length > 0;
@@ -72,29 +79,14 @@ export function validateFormFlat() {
         saveFlat.disabled = !isValid;
     };
 
-    city.addEventListener("keyup", validateFlat);
-    street_name.addEventListener("keyup", validateFlat);
-    street_number.addEventListener("keyup", validateFlat);
-    area_size.addEventListener("keyup", validateFlat);
-    year_built.addEventListener("keyup", validateFlat);
-    rent_price.addEventListener("keyup", validateFlat);
-    date_available.addEventListener("keyup", validateFlat);
+    city.addEventListener("input", validateFlat);
+    street_name.addEventListener("input", validateFlat);
+    street_number.addEventListener("input", validateFlat);
+    area_size.addEventListener("input", validateFlat);
+    year_built.addEventListener("input", validateFlat);
+    rent_price.addEventListener("input", validateFlat);
+    date_available.addEventListener("input", validateFlat);
 
-    city.addEventListener("blur", validateFlat);
-    street_number.addEventListener("blur", validateFlat);
-    street_name.addEventListener("blur", validateFlat);
-    area_size.addEventListener("blur", validateFlat);
-    year_built.addEventListener("blur", validateFlat);
-    rent_price.addEventListener("blur", validateFlat);
-    date_available.addEventListener("blur", validateFlat);
-
-    city.addEventListener("change", validateFlat);
-    street_name.addEventListener("change", validateFlat);
-    street_number.addEventListener("change", validateFlat);
-    area_size.addEventListener("change", validateFlat);
-    year_built.addEventListener("change", validateFlat);
-    rent_price.addEventListener("change", validateFlat);
-    date_available.addEventListener("change", validateFlat);
 
     validateFlat();
     return isValid;
