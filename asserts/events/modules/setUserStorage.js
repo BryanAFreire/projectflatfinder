@@ -4,8 +4,7 @@ import { startSession } from "./startSession.js";
 import { createErrorMessage } from "./createMessageError.js";
 import {validateFormRegister} from "./validateFormRegister.js";
 
-export function setUserStorage(event) {
-    event.preventDefault();
+export function setUserStorage() {
 
     validateFormRegister();
 
