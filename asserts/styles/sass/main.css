@@ -137,19 +137,34 @@ li {
   margin: 5px 0;
 }
 
-.container-items-filters-price, .container-items-filters-area {
+.filter-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.container-items-filters-price,
+.container-items-filters-area {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+.container-items-filters-price input,
+.container-items-filters-price span,
+.container-items-filters-area input,
+.container-items-filters-area span {
+  width: 40%;
+  margin: 0 5px;
+  padding: 5px;
 }
 
-.container-items-filters-price input, .container-items-filters-price span {
-  margin: 0 1px;
-  width: 100%;
-}
-
-.container-items-filters-price span {
+.container-items-filters-price span,
+.container-items-filters-area span {
   width: 20%;
+  text-align: center;
 }
 
 .h1 {
