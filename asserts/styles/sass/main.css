@@ -357,6 +357,7 @@ nav * {
   width: 50%;
   top: 60px;
   left: 0;
+  margin: 0;
   background-color: var(--fourth-color-overshadowed);
 }
 
@@ -415,6 +416,55 @@ body {
   flex-direction: column;
 }
 
+@media (min-width: 720px) {
+  .left-menu {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    align-items: center;
+  }
+  .burger-menu {
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    width: 50px;
+    height: inherit;
+    z-index: 115;
+    display: none;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+  }
+  nav * {
+    margin: 0 2px;
+  }
+  .content-menu {
+    display: flex;
+    flex-direction: row;
+    position: inherit;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+  .content-menu li {
+    margin: 0 2%;
+    padding: 2%;
+  }
+  .content-menu li a {
+    color: var(--eighth-color);
+  }
+}
 .group-form {
   padding: 0.5rem;
   width: 100%;

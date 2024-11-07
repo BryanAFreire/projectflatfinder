@@ -1,35 +1,81 @@
 // 360×640 (small mobile)
-@media (max-width: 360px) and (max-height: 640px) {
+@media (min-width: 360px) {
   //default
 }
 
 // 375×667 (medium mobile)
-@media (max-width: 375px) and (max-height: 667px) {
+@media (min-width: 375px) {
   // Styles for medium mobile
 }
 
 // 720×1280 (large mobile)
-@media (max-width: 720px) and (max-height: 1280px) {
-  // Styles for large mobile
+@media (min-width: 720px) {
+  .left-menu {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    align-items: center;
+  }
+
+  .burger-menu {
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    width: 50px;
+    height: inherit;
+    z-index: 115;
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+  }
+
+  nav * {
+    margin: 0 2px;
+  }
+
+  .content-menu {
+    display: flex;
+    flex-direction: row;
+    position: inherit;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+
+  .content-menu li {
+    margin: 0 2%;
+    padding: 2%;
+  }
+
+  .content-menu li a {
+    color: var(--eighth-color);
+  }
 }
 
 // 1366×768 (medium laptop)
-@media (max-width: 1366px) and (max-height: 768px) {
+@media (min-width: 1366px) {
   // Styles for medium laptop
 }
 
 // 1440×900 (medium desktop)
-@media (max-width: 1440px) and (max-height: 900px) {
+@media (min-width: 1440px) {
   // Styles for medium desktop
 }
 
 // 1920×1080 (large desktop)
-@media (max-width: 1920px) and (max-height: 1080px) {
+@media (min-width: 1920px) {
   // Styles for large desktop
 }
-
-
-
-
-
-
